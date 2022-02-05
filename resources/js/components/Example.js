@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {useState} from 'react';
+import axios from "axios";
 
-function Example() {
+const Example = () => {
+    const [text, setText] = useState("name");
+    const onClickTest = () => {
+        axios.get("/api/get").then((res)=>{console.log(res.data), setText(res.data.name)})
+    }
     return (
-        <div className="container">
+        <div>
             <h1>hello world</h1>
+            <h2>{text}</h2>
+            <button onClick={onClickTest}>click</button>
         </div>
     );
 }
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}

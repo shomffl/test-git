@@ -6,7 +6,7 @@
         <title>Laravel</title>
     </head>
     <body class="antialiased">
-        <div id="example">
+        <div id="root">
         </div>
     </body>
         <script src="{{ mix('js/app.js') }}"></script>
