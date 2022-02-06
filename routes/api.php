@@ -10,3 +10,7 @@ use App\Http\Controllers\WeatherController;
 Route::group(['middleware' => ['api']], function () {
     Route::get("get", "WeatherController@index");
 });
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

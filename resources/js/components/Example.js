@@ -4,7 +4,10 @@ import axios from "axios";
 const Example = () => {
     const [text, setText] = useState("name");
     const onClickTest = () => {
-        axios.get("/api/get").then((res)=>{console.log(res.data), setText(res.data.name)})
+        axios.get("/sanctum/csrf-cookie").then((res)=>{console.log(res)})
+    }
+    const onClickUser = () => {
+        axios.get("/user").then((res)=>console.log(res))
     }
     return (
         <div>

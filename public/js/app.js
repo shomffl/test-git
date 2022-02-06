@@ -32212,8 +32212,14 @@ var Example = function Example() {
       setText = _useState2[1];
 
   var onClickTest = function onClickTest() {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/get").then(function (res) {
-      console.log(res.data), setText(res.data.name);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/sanctum/csrf-cookie").then(function (res) {
+      console.log(res);
+    });
+  };
+
+  var onClickUser = function onClickUser() {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user").then(function (res) {
+      return console.log(res);
     });
   };
 
