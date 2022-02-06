@@ -32211,6 +32211,21 @@ var Example = function Example() {
       text = _useState2[0],
       setText = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      username = _useState4[0],
+      setUsername = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      email = _useState6[0],
+      setEmail = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      password = _useState8[0],
+      setPassword = _useState8[1];
+
   var onClickTest = function onClickTest() {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/sanctum/csrf-cookie").then(function (res) {
       console.log(res);
@@ -32218,14 +32233,64 @@ var Example = function Example() {
   };
 
   var onClickUser = function onClickUser() {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/get").then(function (res) {
       return console.log(res);
     });
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello world"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: onClickTest
-  }, "click"));
+  var onClickGetUser = function onClickGetUser() {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/index").then(function (res) {
+      return console.log(res);
+    });
+  };
+
+  var onClickSubmit = function onClickSubmit(e) {
+    e.preventDefault();
+    var data = {
+      "name": username,
+      "email": email,
+      "password": password
+    };
+    console.log(data);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/create", data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(function (res) {
+      return console.log(res);
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello world"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: onClickUser
+  }, "click"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: onClickGetUser
+  }, "get")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onClickSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "user[name]",
+    placeholder: "username",
+    onChange: function onChange(e) {
+      return setUsername(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "user[email]",
+    placeholder: "email",
+    onChange: function onChange(e) {
+      return setEmail(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "user[password]",
+    placeholder: "password",
+    onChange: function onChange(e) {
+      return setPassword(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit"
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Example);
