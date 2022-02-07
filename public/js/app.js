@@ -32319,6 +32319,69 @@ var Example = function Example() {
 
 /***/ }),
 
+/***/ "./resources/js/components/pages/Auth.jsx":
+/*!************************************************!*\
+  !*** ./resources/js/components/pages/Auth.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Auth = function Auth() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Auth");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Auth);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Select.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/pages/Select.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Select = function Select() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "select");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Select);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Weather.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/components/pages/Weather.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Weather = function Weather() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "weather");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Weather);
+
+/***/ }),
+
 /***/ "./resources/js/router/Router.jsx":
 /*!****************************************!*\
   !*** ./resources/js/router/Router.jsx ***!
@@ -32332,6 +32395,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _components_Example__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Example */ "./resources/js/components/Example.js");
+/* harmony import */ var _components_pages_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/pages/Auth */ "./resources/js/components/pages/Auth.jsx");
+/* harmony import */ var _components_pages_Select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/pages/Select */ "./resources/js/components/pages/Select.jsx");
+/* harmony import */ var _components_pages_Weather__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/pages/Weather */ "./resources/js/components/pages/Weather.jsx");
+
+
+
 
 
 
@@ -32339,6 +32408,15 @@ __webpack_require__.r(__webpack_exports__);
 var Router = function Router() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Routes"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pages_Auth__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/select",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pages_Select__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/weather",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pages_Weather__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/example",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Example__WEBPACK_IMPORTED_MODULE_2__["default"], null)
   })));
 };
