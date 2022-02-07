@@ -32206,25 +32206,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Example = function Example() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("name"),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
-      text = _useState2[0],
-      setText = _useState2[1];
+      username = _useState2[0],
+      setUsername = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      username = _useState4[0],
-      setUsername = _useState4[1];
+      email = _useState4[0],
+      setEmail = _useState4[1];
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
-
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState8 = _slicedToArray(_useState7, 2),
-      password = _useState8[0],
-      setPassword = _useState8[1];
+      password = _useState6[0],
+      setPassword = _useState6[1];
 
   var onClickTest = function onClickTest() {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/sanctum/csrf-cookie").then(function (res) {
@@ -32233,7 +32228,7 @@ var Example = function Example() {
   };
 
   var onClickUser = function onClickUser() {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/get").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/index").then(function (res) {
       return console.log(res);
     });
   };
@@ -32244,7 +32239,7 @@ var Example = function Example() {
     });
   };
 
-  var onClickSubmit = function onClickSubmit(e) {
+  var onClickRegister = function onClickRegister(e) {
     e.preventDefault();
     var data = {
       "name": username,
@@ -32252,38 +32247,65 @@ var Example = function Example() {
       "password": password
     };
     console.log(data);
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/create", data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(function (res) {
-      return console.log(res);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", data).then(function (res) {
+      return console.log(res.data);
     });
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello world"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  var onClickLogin = function onClickLogin(e) {
+    e.preventDefault();
+    var data = {
+      "name": username,
+      "email": email,
+      "password": password
+    };
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/login", data).then(function (res) {
+      return console.log(res.data);
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello world"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: onClickUser
   }, "click"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: onClickGetUser
-  }, "get")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: onClickSubmit
+  }, "get")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onClickRegister
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
-    name: "user[name]",
     placeholder: "username",
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "email",
-    name: "user[email]",
     placeholder: "email",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
-    name: "user[password]",
+    placeholder: "password",
+    onChange: function onChange(e) {
+      return setPassword(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onClickLogin
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "username",
+    onChange: function onChange(e) {
+      return setUsername(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    placeholder: "email",
+    onChange: function onChange(e) {
+      return setEmail(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
     placeholder: "password",
     onChange: function onChange(e) {
       return setPassword(e.target.value);
