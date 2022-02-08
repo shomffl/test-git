@@ -36139,28 +36139,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 react_modal__WEBPACK_IMPORTED_MODULE_2___default.a.setAppElement("#root");
-var modalStyle = {
-  overlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    backgroundColor: "rgba(0,0,0,0.85)"
-  },
-  content: {
-    position: "absolute",
-    top: "10rem",
-    left: "30rem",
-    right: "30rem",
-    bottom: "10rem",
-    backgroundColor: "#85C8F2",
-    borderRadius: "1vw",
-    border: "none"
-  }
-};
 var BaseModal = function BaseModal(props) {
   var children = props.children,
       isOpen = props.isOpen,
-      setIsOpen = props.setIsOpen;
+      setIsOpen = props.setIsOpen,
+      sizeHeight = props.sizeHeight,
+      sizeWidth = props.sizeWidth;
+  var modalStyle = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      backgroundColor: "rgba(0,0,0,0.85)"
+    },
+    content: {
+      position: "absolute",
+      top: sizeHeight,
+      left: sizeWidth,
+      right: sizeWidth,
+      bottom: sizeHeight,
+      backgroundColor: "#85C8F2",
+      borderRadius: "1vw",
+      border: "none"
+    }
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_2___default.a, {
     isOpen: isOpen,
     style: modalStyle,
@@ -36212,10 +36214,14 @@ var ButtonModal = function ButtonModal(props) {
   var children = props.children,
       text = props.text,
       isOpen = props.isOpen,
-      setIsOpen = props.setIsOpen;
+      setIsOpen = props.setIsOpen,
+      sizeHeight = props.sizeHeight,
+      sizeWidth = props.sizeWidth;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__["BaseModal"], {
     isOpen: isOpen,
-    setIsOpen: setIsOpen
+    setIsOpen: setIsOpen,
+    sizeHeight: sizeHeight,
+    sizeWidth: sizeWidth
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], null, text)));
 };
 var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n"])));
@@ -36291,7 +36297,9 @@ var LoginModal = function LoginModal(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButtonModal, {
     isOpen: isOpen,
     text: "SEND",
-    setIsOpen: setIsOpen
+    setIsOpen: setIsOpen,
+    sizeHeight: "15vh",
+    sizeWidth: "35vw"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
     type: "email",
     text: "EMAIL ADRESS",
@@ -36352,7 +36360,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Auth = function Auth() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isOpen = _useState2[0],
       setIsOpen = _useState2[1];

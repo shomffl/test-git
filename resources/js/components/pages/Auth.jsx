@@ -8,7 +8,7 @@ import Modal from "react-modal";
 import {LoginModal} from "../organisms/auth/LoginModal";
 
 const Auth = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     
     return (
         <SBackground>
