@@ -36272,7 +36272,9 @@ var ButtonModal = function ButtonModal(props) {
       setIsOpen = props.setIsOpen,
       sizeHeight = props.sizeHeight,
       sizeWidth = props.sizeWidth,
-      onClickEvent = props.onClickEvent;
+      onClickEvent = props.onClickEvent,
+      onClickText = props.onClickText,
+      linkText = props.linkText;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__["BaseModal"], {
     isOpen: isOpen,
     setIsOpen: setIsOpen,
@@ -36280,7 +36282,9 @@ var ButtonModal = function ButtonModal(props) {
     sizeWidth: sizeWidth
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], {
     onClickEvent: onClickEvent
-  }, text)));
+  }, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    onClick: onClickText
+  }, linkText)));
 };
 var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 90%;\n"])));
 
@@ -36349,7 +36353,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var LoginModal = function LoginModal(props) {
   var isOpen = props.isOpen,
-      setIsOpen = props.setIsOpen;
+      setIsOpen = props.setIsOpen,
+      onClickChangeAuth = props.onClickChangeAuth;
   var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
 
   var onClickLogin = function onClickLogin() {
@@ -36362,7 +36367,9 @@ var LoginModal = function LoginModal(props) {
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
     sizeWidth: "37vw",
-    onClickEvent: onClickLogin
+    onClickEvent: onClickLogin,
+    onClickText: onClickChangeAuth,
+    linkText: "Change the authentication mode"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: "white"
@@ -36405,7 +36412,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var RegisterModal = function RegisterModal(props) {
   var isOpen = props.isOpen,
-      setIsOpen = props.setIsOpen;
+      setIsOpen = props.setIsOpen,
+      onClickChangeAuth = props.onClickChangeAuth;
   var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
 
   var onClickRegister = function onClickRegister() {
@@ -36416,9 +36424,11 @@ var RegisterModal = function RegisterModal(props) {
     isOpen: isOpen,
     text: "SEND",
     setIsOpen: setIsOpen,
-    sizeHeight: "20vh",
+    sizeHeight: "17vh",
     sizeWidth: "37vw",
-    onClickEvent: onClickRegister
+    onClickEvent: onClickRegister,
+    onClickText: onClickChangeAuth,
+    linkText: "Change the authentication mode"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: "white"
@@ -36481,15 +36491,29 @@ var Auth = function Auth() {
       isOpen = _useState2[0],
       setIsOpen = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      changeAuth = _useState4[0],
+      setChangeAuth = _useState4[1];
+
   var onClickOpenModal = function onClickOpenModal() {
     setIsOpen(!isOpen);
   };
 
+  var onClickChangeAuth = function onClickChangeAuth() {
+    setChangeAuth(!changeAuth);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_templates_DefaultLayout__WEBPACK_IMPORTED_MODULE_5__["DefaultLayout"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__["PrimaryButton"], {
     onClickEvent: onClickOpenModal
-  }, "\u59CB\u3081\u308B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_RegisterModal__WEBPACK_IMPORTED_MODULE_4__["RegisterModal"], {
+  }, "\u59CB\u3081\u308B"), changeAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_LoginModal__WEBPACK_IMPORTED_MODULE_3__["LoginModal"], {
     isOpen: isOpen,
-    setIsOpen: setIsOpen
+    setIsOpen: setIsOpen,
+    onClickChangeAuth: onClickChangeAuth
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_RegisterModal__WEBPACK_IMPORTED_MODULE_4__["RegisterModal"], {
+    isOpen: isOpen,
+    setIsOpen: setIsOpen,
+    onClickChangeAuth: onClickChangeAuth
   }));
 };
 

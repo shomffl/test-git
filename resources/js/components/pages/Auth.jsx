@@ -8,14 +8,22 @@ import {DefaultLayout} from "../templates/DefaultLayout";
 
 const Auth = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [changeAuth, setChangeAuth] = useState(true);
     const onClickOpenModal = () => {
         setIsOpen(!isOpen);
+    }
+    const onClickChangeAuth = () => {
+        setChangeAuth(!changeAuth);
     }
 
     return (
         <DefaultLayout>
             <PrimaryButton onClickEvent={onClickOpenModal}>始める</PrimaryButton>
-            <RegisterModal isOpen={isOpen} setIsOpen={setIsOpen}></RegisterModal>
+            {changeAuth ? (
+            <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} onClickChangeAuth={onClickChangeAuth}/>
+            ) : (
+            <RegisterModal isOpen={isOpen} setIsOpen={setIsOpen} onClickChangeAuth={onClickChangeAuth}/>
+            )}
         </DefaultLayout>
         )
 }
