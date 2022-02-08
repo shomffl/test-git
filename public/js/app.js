@@ -33421,7 +33421,6 @@ var Example = function Example() {
   var onClickLogin = function onClickLogin(e) {
     e.preventDefault();
     var data = {
-      "name": username,
       "email": email,
       "password": password
     };
@@ -33459,12 +33458,6 @@ var Example = function Example() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: onClickLogin
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    placeholder: "username",
-    onChange: function onChange(e) {
-      return setUsername(e.target.value);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "email",
     placeholder: "email",
     onChange: function onChange(e) {
@@ -33504,7 +33497,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var BaseButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n//   color: #fff;\n  padding: 6px 24px;\n  border: solid;\n  &:hover {\n      cursor: pointer;\n      opacity: 0.8;\n  }\n"])));
+var BaseButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  color: #fff;\n  padding: 6px 24px;\n  border: 2px solid;\n  border-color: #fff;\n  &:hover {\n      cursor: pointer;\n      transform: translateY(-0.1rem);\n      opacity: 0.8;\n  }\n"])));
 
 /***/ }),
 
@@ -33533,7 +33526,38 @@ var PrimaryButton = function PrimaryButton(props) {
   var children = props.children;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButton, null, children);
 };
-var SButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_BaseButton__WEBPACK_IMPORTED_MODULE_2__["BaseButton"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  background-color: rgba(255, 255, 255, 0.5);\n\n"])));
+var SButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_BaseButton__WEBPACK_IMPORTED_MODULE_2__["BaseButton"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  background-color: rgba(255, 255, 255, 0.1);\n  filter: drop-shadow(5px 3px 1px #D9D9D9);\n"])));
+
+/***/ }),
+
+/***/ "./resources/js/components/atoms/input/Input.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/atoms/input/Input.jsx ***!
+  \*******************************************************/
+/*! exports provided: Input */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Input", function() { return Input; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var Input = function Input(props) {
+  var _props$placeholder = props.placeholder,
+      placeholder = _props$placeholder === void 0 ? "" : _props$placeholder;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SInput, {
+    type: "text",
+    placeholder: placeholder
+  });
+};
+var SInput = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    padding: 8px 16px;\n    border: solid #ddd 1px;\n    border-radius: 9999px;\n    outline: none;\n"])));
 
 /***/ }),
 
@@ -33563,6 +33587,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../atoms/button/PrimaryButton */ "./resources/js/components/atoms/button/PrimaryButton.jsx");
 /* harmony import */ var _image_sky_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/sky.jpg */ "./resources/js/components/image/sky.jpg");
 /* harmony import */ var _image_sky_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_image_sky_jpg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
 var _templateObject;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -33572,8 +33597,11 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var Auth = function Auth() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SBackground, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__["PrimaryButton"], null, "start"));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SBackground, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__["PrimaryButton"], null, "start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_input_Input__WEBPACK_IMPORTED_MODULE_4__["Input"], {
+    placeholder: "test"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Auth);

@@ -8,6 +8,6 @@ export const PrimaryButton = (props) => {
 }
 
 const SButton = styled(BaseButton)`
-  background-color: rgba(255, 255, 255, 0.5);
-
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(5px 3px 1px #D9D9D9);
 `

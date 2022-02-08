@@ -30,7 +30,6 @@ const Example = () => {
     const onClickLogin = (e) => {
         e.preventDefault()
         const data = {
-            "name" : username,
             "email" : email,
             "password" : password,
         }
@@ -57,8 +56,6 @@ const Example = () => {
             <div>
                 <h2>login</h2>
                 <form onSubmit={onClickLogin}>
-                    <input type="text"  placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
-                    <br/>
                     <input type="email" placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
                     <br/>
                     <input type="password"  placeholder="password" onChange={(e) => setPassword(e.target.value)}/>

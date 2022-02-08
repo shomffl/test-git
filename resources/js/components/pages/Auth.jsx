@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {PrimaryButton} from "../atoms/button/PrimaryButton";
 import backgroundImage from "../image/sky.jpg";
+import {Input} from "../atoms/input/Input";
 
 const Auth = () => {
     
@@ -9,6 +10,7 @@ const Auth = () => {
         <SBackground>
             
             <PrimaryButton>start</PrimaryButton>
+            <Input placeholder={"test"}/>
         </SBackground>
         )
 }
