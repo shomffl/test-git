@@ -36351,7 +36351,11 @@ var LoginModal = function LoginModal(props) {
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
     sizeWidth: "37vw"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    style: {
+      color: "white"
+    }
+  }, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
     type: "email",
     text: "EMAIL ADRESS",
     placeholder: "example@gmail.lc"
@@ -36394,7 +36398,11 @@ var RegisterModal = function RegisterModal(props) {
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
     sizeWidth: "37vw"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    style: {
+      color: "white"
+    }
+  }, "REGISTER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
     type: "text",
     text: "USER NAME",
     placeholder: "your name"
