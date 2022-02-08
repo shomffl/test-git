@@ -10,8 +10,8 @@ export const DefaultLayout = (props) => {
         <SBackground>
             <SBorderLine>
                 <SImagePosition>
-                    <img src={title1} style={{width:"40vw", transform:"translate(-30%, 0)"}}/>
-                    <img src={title2} style={{width:"25vw", transform:"translate(30%, 0)"}}/>
+                    <img src={title1} style={{width:"40vw", transform:"translate(-20%, 0)"}}/>
+                    <img src={title2} style={{width:"25vw", transform:"translate(40%, 0)"}}/>
                 </SImagePosition>
                 <SContentWrapper>
                     {children}

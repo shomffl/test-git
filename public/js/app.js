@@ -36271,13 +36271,16 @@ var ButtonModal = function ButtonModal(props) {
       isOpen = props.isOpen,
       setIsOpen = props.setIsOpen,
       sizeHeight = props.sizeHeight,
-      sizeWidth = props.sizeWidth;
+      sizeWidth = props.sizeWidth,
+      onClickEvent = props.onClickEvent;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__["BaseModal"], {
     isOpen: isOpen,
     setIsOpen: setIsOpen,
     sizeHeight: sizeHeight,
     sizeWidth: sizeWidth
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], null, text)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], {
+    onClickEvent: onClickEvent
+  }, text)));
 };
 var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 90%;\n"])));
 
@@ -36337,6 +36340,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
 /* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 
 
@@ -36345,12 +36350,19 @@ __webpack_require__.r(__webpack_exports__);
 var LoginModal = function LoginModal(props) {
   var isOpen = props.isOpen,
       setIsOpen = props.setIsOpen;
+  var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
+
+  var onClickLogin = function onClickLogin() {
+    navigate("/select");
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
     isOpen: isOpen,
     text: "SEND",
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
-    sizeWidth: "37vw"
+    sizeWidth: "37vw",
+    onClickEvent: onClickLogin
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: "white"
@@ -36384,6 +36396,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
 /* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 
 
@@ -36392,12 +36406,19 @@ __webpack_require__.r(__webpack_exports__);
 var RegisterModal = function RegisterModal(props) {
   var isOpen = props.isOpen,
       setIsOpen = props.setIsOpen;
+  var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
+
+  var onClickRegister = function onClickRegister() {
+    navigate("/select");
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
     isOpen: isOpen,
     text: "SEND",
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
-    sizeWidth: "37vw"
+    sizeWidth: "37vw",
+    onClickEvent: onClickRegister
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: "white"
@@ -36551,13 +36572,13 @@ var DefaultLayout = function DefaultLayout(props) {
     src: _image_title1_png__WEBPACK_IMPORTED_MODULE_3___default.a,
     style: {
       width: "40vw",
-      transform: "translate(-30%, 0)"
+      transform: "translate(-20%, 0)"
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: _image_title2_png__WEBPACK_IMPORTED_MODULE_4___default.a,
     style: {
       width: "25vw",
-      transform: "translate(30%, 0)"
+      transform: "translate(40%, 0)"
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContentWrapper, null, children)));
 };
