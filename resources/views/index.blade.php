@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
     </head>
-    <body class="antialiased">
+    <body style="margin:0px;">
         <div id="root">
         </div>
     </body>

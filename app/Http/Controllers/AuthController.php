@@ -34,15 +34,10 @@ class AuthController extends Controller
         $text = "";
         
         if ($user != null){
-            if ($user["name"] == $request["name"]){
-                if (Hash::check($request["password"], $user["password"] ,)){
-                    $text = "ログインに成功しました";
-                    $error_judgement = "false";
-                } else{
-                    $error_judgement = "true";
-                    $text = "ログインに失敗しました";
-                }
-            }else{
+            if (Hash::check($request["password"], $user["password"] ,)){
+                $text = "ログインに成功しました";
+                $error_judgement = "false";
+            } else{
                 $error_judgement = "true";
                 $text = "ログインに失敗しました";
             }
