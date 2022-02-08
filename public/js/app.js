@@ -36254,7 +36254,7 @@ var ButtonModal = function ButtonModal(props) {
     sizeWidth: sizeWidth
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], null, text)));
 };
-var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n"])));
+var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 90%;\n"])));
 
 /***/ }),
 
@@ -36339,6 +36339,53 @@ var LoginModal = function LoginModal(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/organisms/auth/RegisterModal.jsx":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/organisms/auth/RegisterModal.jsx ***!
+  \******************************************************************/
+/*! exports provided: RegisterModal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterModal", function() { return RegisterModal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../molecules/ButtonModal */ "./resources/js/components/molecules/ButtonModal.jsx");
+/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
+/* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+
+
+var RegisterModal = function RegisterModal(props) {
+  var isOpen = props.isOpen,
+      setIsOpen = props.setIsOpen;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
+    isOpen: isOpen,
+    text: "SEND",
+    setIsOpen: setIsOpen,
+    sizeHeight: "20vh",
+    sizeWidth: "37vw"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+    type: "text",
+    text: "USER NAME",
+    placeholder: "your name"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+    type: "email",
+    text: "EMAIL ADRESS",
+    placeholder: "example@gmail.lc"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+    type: "password",
+    text: "PASSWORD",
+    placeholder: "password"
+  }));
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/pages/Auth.jsx":
 /*!************************************************!*\
   !*** ./resources/js/components/pages/Auth.jsx ***!
@@ -36354,6 +36401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../atoms/button/PrimaryButton */ "./resources/js/components/atoms/button/PrimaryButton.jsx");
 /* harmony import */ var _atoms_background_Background__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../atoms/background/Background */ "./resources/js/components/atoms/background/Background.jsx");
 /* harmony import */ var _organisms_auth_LoginModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../organisms/auth/LoginModal */ "./resources/js/components/organisms/auth/LoginModal.jsx");
+/* harmony import */ var _organisms_auth_RegisterModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../organisms/auth/RegisterModal */ "./resources/js/components/organisms/auth/RegisterModal.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -36372,6 +36420,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Auth = function Auth() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -36382,7 +36431,7 @@ var Auth = function Auth() {
     onClick: function onClick() {
       return setIsOpen(!isOpen);
     }
-  }, "open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_LoginModal__WEBPACK_IMPORTED_MODULE_4__["LoginModal"], {
+  }, "open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_RegisterModal__WEBPACK_IMPORTED_MODULE_5__["RegisterModal"], {
     isOpen: isOpen,
     setIsOpen: setIsOpen
   }));
