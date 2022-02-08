@@ -6,11 +6,11 @@ import {Input} from "../atoms/input/Input";
 
 
 export const ButtonModal = (props) => {
-    const {children, text, isOpen, setIsOpen} = props;
+    const {children, text, isOpen, setIsOpen, sizeHeight, sizeWidth} = props;
     
 
     return (
-            <BaseModal isOpen={isOpen} setIsOpen={setIsOpen}>
+            <BaseModal isOpen={isOpen} setIsOpen={setIsOpen} sizeHeight={sizeHeight} sizeWidth={sizeWidth}>
                 <SContainer>
                     {children}
                     <br/>
