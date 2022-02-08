@@ -36340,6 +36340,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
 /* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 
 
@@ -36348,12 +36350,19 @@ __webpack_require__.r(__webpack_exports__);
 var LoginModal = function LoginModal(props) {
   var isOpen = props.isOpen,
       setIsOpen = props.setIsOpen;
+  var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
+
+  var onClickLogin = function onClickLogin() {
+    navigate("/select");
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
     isOpen: isOpen,
     text: "SEND",
     setIsOpen: setIsOpen,
     sizeHeight: "20vh",
-    sizeWidth: "37vw"
+    sizeWidth: "37vw",
+    onClickEvent: onClickLogin
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: "white"
