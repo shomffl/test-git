@@ -12,11 +12,10 @@ const Auth = () => {
     
     return (
         <SBackground>
-            
             <PrimaryButton>start</PrimaryButton>
             <Input placeholder={"test"}/>
             <button onClick={()=>setIsOpen(!isOpen)}>open</button>
-            <LoginModal isOpen={isOpen}></LoginModal>
+            <LoginModal isOpen={isOpen} setIsOpen={setIsOpen}></LoginModal>
         </SBackground>
         )
 }

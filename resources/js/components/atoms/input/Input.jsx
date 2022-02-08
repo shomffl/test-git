@@ -8,6 +8,7 @@ export const Input = (props) => {
 
 const SInput = styled.input`
     padding: 8px 16px;
+    margin-bottom: 10px;
     border: solid #ddd 1px;
     border-radius:0px;
     outline: none;

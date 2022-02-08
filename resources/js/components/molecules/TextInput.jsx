@@ -6,12 +6,12 @@ export const TextInput = (props) => {
     const {text, type, placeholder} = props;
     return (
         <SContentWrapper>
-            <p style={{ margin: "1px"}}>{text}</p>
+            <p style={{ margin: "5px"}}>{text}</p>
             <Input type={type} placeholder={placeholder}/>
         </SContentWrapper>
         )
 }
 
 const SContentWrapper = styled.div`
-    
+    text-align: center;
 `

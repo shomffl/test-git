@@ -6,28 +6,24 @@ import {Input} from "../atoms/input/Input";
 
 
 export const ButtonModal = (props) => {
-    const {children, text, isOpen} = props;
+    const {children, text, isOpen, setIsOpen} = props;
+    
 
     return (
-            <BaseModal isOpen={isOpen}>
-                <SContentWrapper>
+            <BaseModal isOpen={isOpen} setIsOpen={setIsOpen}>
+                <SContainer>
                     {children}
-                </SContentWrapper>
-                <SButtonWrapper>
+                    <br/>
                     <PrimaryButton>{text}</PrimaryButton>
-                </SButtonWrapper>
+                </SContainer>
             </BaseModal>
         )    
 }
 
-const SContentWrapper = styled.div`
-    text-align: center;
-    display: inline-block;
-    
+const SContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `
-
-const SButtonWrapper = styled.div`
-    text-align: center;
-    position: relative;
-    top: 85%;
-`;
