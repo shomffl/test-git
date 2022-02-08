@@ -8,14 +8,10 @@ export const LoginModal = (props) => {
     const {isOpen,setIsOpen} = props;
 
     return(
-        <SButtonModal isOpen={isOpen} text={"SEND"} setIsOpen={setIsOpen} sizeHeight={"15vh"} sizeWidth={"35vw"}>
+        <ButtonModal isOpen={isOpen} text={"SEND"} setIsOpen={setIsOpen} sizeHeight={"20vh"} sizeWidth={"37vw"}>
+            <h2>LOGIN</h2>
             <TextInput type={"email"} text={"EMAIL ADRESS"} placeholder={"example@gmail.lc"} />
             <TextInput type={"password"} text={"PASSWORD"} placeholder={"password"} />
-        </SButtonModal>
+        </ButtonModal>
         )
 }
-
-const SButtonModal = styled(ButtonModal)`
-    align-items: center;
-
-`
