@@ -36083,7 +36083,7 @@ var PrimaryButton = function PrimaryButton(props) {
   var children = props.children;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButton, null, children);
 };
-var SButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_BaseButton__WEBPACK_IMPORTED_MODULE_2__["BaseButton"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  background-color: rgba(255, 255, 255, 0.1);\n  filter: drop-shadow(5px 3px 1px #959595);\n  font-size: 3.5vw;\n"])));
+var SButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_BaseButton__WEBPACK_IMPORTED_MODULE_2__["BaseButton"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  background-color: rgba(255, 255, 255, 0.1);\n  filter: drop-shadow(5px 3px 1px #959595);\n  font-size: 3vw;\n"])));
 
 /***/ }),
 
@@ -36107,14 +36107,16 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Input = function Input(props) {
-  var _props$placeholder = props.placeholder,
+  var _props$type = props.type,
+      type = _props$type === void 0 ? "text" : _props$type,
+      _props$placeholder = props.placeholder,
       placeholder = _props$placeholder === void 0 ? "" : _props$placeholder;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SInput, {
-    type: "text",
+    type: type,
     placeholder: placeholder
   });
 };
-var SInput = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    padding: 8px 16px;\n    border: solid #ddd 1px;\n    border-radius: 9999px;\n    outline: none;\n"])));
+var SInput = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    padding: 8px 16px;\n    border: solid #ddd 1px;\n    border-radius:0px;\n    outline: none;\n    width: 15vw;\n"])));
 
 /***/ }),
 
@@ -36184,7 +36186,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../atoms/button/PrimaryButton */ "./resources/js/components/atoms/button/PrimaryButton.jsx");
 /* harmony import */ var _atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../atoms/modal/BaseModal */ "./resources/js/components/atoms/modal/BaseModal.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject;
+/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
+var _templateObject, _templateObject2;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -36192,14 +36195,96 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var ButtonModal = function ButtonModal(props) {
   var children = props.children,
+      text = props.text,
       isOpen = props.isOpen;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__["BaseModal"], {
     isOpen: isOpen
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButtonWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], null, children)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContentWrapper, null, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButtonWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], null, text)));
 };
-var SButtonWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    text-align: center;\n    position: relative;\n    top: 85%;\n"])));
+var SContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    text-align: center;\n    display: inline-block;\n    \n"])));
+var SButtonWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    text-align: center;\n    position: relative;\n    top: 85%;\n"])));
+
+/***/ }),
+
+/***/ "./resources/js/components/molecules/TextInput.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/molecules/TextInput.jsx ***!
+  \*********************************************************/
+/*! exports provided: TextInput */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextInput", function() { return TextInput; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var TextInput = function TextInput(props) {
+  var text = props.text,
+      type = props.type,
+      placeholder = props.placeholder;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContentWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: {
+      margin: "1px"
+    }
+  }, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_input_Input__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    type: type,
+    placeholder: placeholder
+  }));
+};
+var SContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    \n"])));
+
+/***/ }),
+
+/***/ "./resources/js/components/organisms/auth/LoginModal.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/organisms/auth/LoginModal.jsx ***!
+  \***************************************************************/
+/*! exports provided: LoginModal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginModal", function() { return LoginModal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../molecules/ButtonModal */ "./resources/js/components/molecules/ButtonModal.jsx");
+/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
+/* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+var LoginModal = function LoginModal(props) {
+  var isOpen = props.isOpen;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SButtonModal, {
+    isOpen: isOpen,
+    text: "LOGIN"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+    type: "email",
+    text: "EMAIL ADRESS",
+    placeholder: "example@gmail.lc"
+  }));
+};
+var SButtonModal = Object(styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    align-items: center;\n\n"])));
+var SInputContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    display:flex;\n    flex-direction: column;\n"])));
 
 /***/ }),
 
@@ -36222,6 +36307,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../molecules/ButtonModal */ "./resources/js/components/molecules/ButtonModal.jsx");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _organisms_auth_LoginModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../organisms/auth/LoginModal */ "./resources/js/components/organisms/auth/LoginModal.jsx");
 var _templateObject;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -36246,6 +36332,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Auth = function Auth() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
@@ -36258,9 +36345,9 @@ var Auth = function Auth() {
     onClick: function onClick() {
       return setIsOpen(!isOpen);
     }
-  }, "open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_5__["ButtonModal"], {
+  }, "open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_organisms_auth_LoginModal__WEBPACK_IMPORTED_MODULE_7__["LoginModal"], {
     isOpen: isOpen
-  }, "test"));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Auth);

@@ -5,6 +5,7 @@ import backgroundImage from "../image/sky.jpg";
 import {Input} from "../atoms/input/Input";
 import {ButtonModal} from "../molecules/ButtonModal";
 import Modal from "react-modal";
+import {LoginModal} from "../organisms/auth/LoginModal";
 
 const Auth = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -15,7 +16,7 @@ const Auth = () => {
             <PrimaryButton>start</PrimaryButton>
             <Input placeholder={"test"}/>
             <button onClick={()=>setIsOpen(!isOpen)}>open</button>
-            <ButtonModal isOpen={isOpen}>test</ButtonModal>
+            <LoginModal isOpen={isOpen}></LoginModal>
         </SBackground>
         )
 }

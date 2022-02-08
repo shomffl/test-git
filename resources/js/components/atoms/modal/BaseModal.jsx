@@ -12,7 +12,6 @@ const modalStyle = {
     backgroundColor: "#85C8F2",
     borderRadius: "1vw",
     border: "none",
-    
   }
 };
 
