@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Input = (props) => {
-    const {type = "text" ,placeholder = ""} = props;
-  return <SInput type={type} placeholder={placeholder}/>;
+    const {type = "text" ,placeholder = "", onChange} = props;
+  return <SInput type={type} placeholder={placeholder} onChange={onChange}/>;
 };
 
 const SInput = styled.input`

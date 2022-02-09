@@ -3,7 +3,7 @@ import {PrimaryButton} from "../atoms/button/PrimaryButton";
 import {BaseModal} from "../atoms/modal/BaseModal";
 import styled from "styled-components";
 import {Input} from "../atoms/input/Input";
-
+import {LinkText} from "../atoms/link/LinkText";
 
 export const ButtonModal = (props) => {
     const {children, text, isOpen, setIsOpen, sizeHeight, sizeWidth, onClickEvent, onClickText, linkText} = props;
@@ -14,7 +14,7 @@ export const ButtonModal = (props) => {
                     {children}
                     <br/>
                     <PrimaryButton onClickEvent={onClickEvent}>{text}</PrimaryButton>
-                    <p onClick={onClickText}>{linkText}</p>
+                    <LinkText onClickText={onClickText} linkText={linkText}/>
                 </SContainer>
             </BaseModal>
         )    

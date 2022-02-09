@@ -36143,13 +36143,40 @@ var Input = function Input(props) {
   var _props$type = props.type,
       type = _props$type === void 0 ? "text" : _props$type,
       _props$placeholder = props.placeholder,
-      placeholder = _props$placeholder === void 0 ? "" : _props$placeholder;
+      placeholder = _props$placeholder === void 0 ? "" : _props$placeholder,
+      onChange = props.onChange;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SInput, {
     type: type,
-    placeholder: placeholder
+    placeholder: placeholder,
+    onChange: onChange
   });
 };
 var SInput = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    padding: 8px 16px;\n    margin-bottom: 10px;\n    border: solid #ddd 1px;\n    border-radius:0px;\n    outline: none;\n    width: 15vw;\n"])));
+
+/***/ }),
+
+/***/ "./resources/js/components/atoms/link/LinkText.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/atoms/link/LinkText.jsx ***!
+  \*********************************************************/
+/*! exports provided: LinkText */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LinkText", function() { return LinkText; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+var LinkText = function LinkText(props) {
+  var onClickText = props.onClickText,
+      linkText = props.linkText;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    onClick: onClickText
+  }, linkText);
+};
 
 /***/ }),
 
@@ -36256,9 +36283,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _atoms_modal_BaseModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../atoms/modal/BaseModal */ "./resources/js/components/atoms/modal/BaseModal.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
+/* harmony import */ var _atoms_link_LinkText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../atoms/link/LinkText */ "./resources/js/components/atoms/link/LinkText.jsx");
 var _templateObject;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -36282,9 +36311,10 @@ var ButtonModal = function ButtonModal(props) {
     sizeWidth: sizeWidth
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContainer, null, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__["PrimaryButton"], {
     onClickEvent: onClickEvent
-  }, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    onClick: onClickText
-  }, linkText)));
+  }, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_link_LinkText__WEBPACK_IMPORTED_MODULE_5__["LinkText"], {
+    onClickText: onClickText,
+    linkText: linkText
+  })));
 };
 var SContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  height: 90%;\n"])));
 
@@ -36314,14 +36344,16 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var TextInput = function TextInput(props) {
   var text = props.text,
       type = props.type,
-      placeholder = props.placeholder;
+      placeholder = props.placeholder,
+      onChange = props.onChange;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SContentWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     style: {
       margin: "5px"
     }
   }, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_input_Input__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     type: type,
-    placeholder: placeholder
+    placeholder: placeholder,
+    onChange: onChange
   }));
 };
 var SContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    text-align: center;\n"])));
@@ -36345,6 +36377,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -36352,20 +36399,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LoginModal = function LoginModal(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      email = _useState2[0],
+      setEmail = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
   var isOpen = props.isOpen,
       setIsOpen = props.setIsOpen,
       onClickChangeAuth = props.onClickChangeAuth;
   var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
 
-  var onClickLogin = function onClickLogin() {
-    navigate("/select");
+  var onClickLogin = function onClickLogin(e) {
+    e.preventDefault();
+    var data = {
+      "email": email,
+      "password": password
+    };
+    axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("api/login", data).then(function (res) {
+      return console.log(res.data.error_judgement);
+    }); // navigate("/select");
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
     isOpen: isOpen,
     text: "SEND",
     setIsOpen: setIsOpen,
-    sizeHeight: "20vh",
+    sizeHeight: "23vh",
     sizeWidth: "37vw",
     onClickEvent: onClickLogin,
     onClickText: onClickChangeAuth,
@@ -36377,11 +36441,17 @@ var LoginModal = function LoginModal(props) {
   }, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
     type: "email",
     text: "EMAIL ADRESS",
-    placeholder: "example@gmail.lc"
+    placeholder: "example@gmail.com",
+    onChange: function onChange(e) {
+      return setEmail(e.target.value);
+    }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
     type: "password",
     text: "PASSWORD",
-    placeholder: "password"
+    placeholder: "password",
+    onChange: function onChange(e) {
+      return setPassword(e.target.value);
+    }
   }));
 };
 
@@ -36392,61 +36462,9 @@ var LoginModal = function LoginModal(props) {
   !*** ./resources/js/components/organisms/auth/RegisterModal.jsx ***!
   \******************************************************************/
 /*! exports provided: RegisterModal */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterModal", function() { return RegisterModal; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../molecules/ButtonModal */ "./resources/js/components/molecules/ButtonModal.jsx");
-/* harmony import */ var _atoms_input_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../atoms/input/Input */ "./resources/js/components/atoms/input/Input.jsx");
-/* harmony import */ var _molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../molecules/TextInput */ "./resources/js/components/molecules/TextInput.jsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-
-
-
-
-
-
-var RegisterModal = function RegisterModal(props) {
-  var isOpen = props.isOpen,
-      setIsOpen = props.setIsOpen,
-      onClickChangeAuth = props.onClickChangeAuth;
-  var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
-
-  var onClickRegister = function onClickRegister() {
-    navigate("/select");
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
-    isOpen: isOpen,
-    text: "SEND",
-    setIsOpen: setIsOpen,
-    sizeHeight: "17vh",
-    sizeWidth: "37vw",
-    onClickEvent: onClickRegister,
-    onClickText: onClickChangeAuth,
-    linkText: "Change the authentication mode"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    style: {
-      color: "white"
-    }
-  }, "REGISTER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-    type: "text",
-    text: "USER NAME",
-    placeholder: "your name"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-    type: "email",
-    text: "EMAIL ADRESS",
-    placeholder: "example@gmail.lc"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_TextInput__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-    type: "password",
-    text: "PASSWORD",
-    placeholder: "password"
-  }));
-};
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/ec2-user/environment/app1/weather/resources/js/components/organisms/auth/RegisterModal.jsx: Identifier 'React' has already been declared. (2:7)\n\n\u001b[0m \u001b[90m 1 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m,\u001b[39m {useState} \u001b[36mfrom\u001b[39m \u001b[32m\"react\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 2 |\u001b[39m \u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m,\u001b[39m{useState} \u001b[36mfrom\u001b[39m \u001b[32m\"react\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[36mimport\u001b[39m {\u001b[33mButtonModal\u001b[39m} \u001b[36mfrom\u001b[39m \u001b[32m\"../../molecules/ButtonModal\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mimport\u001b[39m {\u001b[33mInput\u001b[39m} \u001b[36mfrom\u001b[39m \u001b[32m\"../../atoms/input/Input\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 |\u001b[39m \u001b[36mimport\u001b[39m {\u001b[33mTextInput\u001b[39m} \u001b[36mfrom\u001b[39m \u001b[32m\"../../molecules/TextInput\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:476:17)\n    at Object.raiseWithData (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:469:17)\n    at Object.raise (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:430:17)\n    at ScopeHandler.checkRedeclarationInScope (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:1720:12)\n    at ScopeHandler.declareName (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:1686:12)\n    at Object.checkLVal (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:11626:24)\n    at Object.parseImportSpecifierLocal (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:15735:10)\n    at Object.maybeParseDefaultImportSpecifier (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:15843:12)\n    at Object.parseImport (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:15700:31)\n    at Object.parseStatementContent (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14223:27)\n    at Object.parseStatement (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14113:17)\n    at Object.parseBlockOrModuleBlockBody (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14739:25)\n    at Object.parseBlockBody (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14730:10)\n    at Object.parseProgram (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14032:10)\n    at Object.parseTopLevel (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:14019:25)\n    at Object.parse (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:15940:10)\n    at parse (/home/ec2-user/environment/app1/weather/node_modules/@babel/parser/lib/index.js:15992:38)\n    at parser (/home/ec2-user/environment/app1/weather/node_modules/@babel/core/lib/parser/index.js:52:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/ec2-user/environment/app1/weather/node_modules/@babel/core/lib/transformation/normalize-file.js:87:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/ec2-user/environment/app1/weather/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/home/ec2-user/environment/app1/weather/node_modules/@babel/core/lib/transform.js:25:41)\n    at transform.next (<anonymous>)\n    at step (/home/ec2-user/environment/app1/weather/node_modules/gensync/index.js:261:32)\n    at /home/ec2-user/environment/app1/weather/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/home/ec2-user/environment/app1/weather/node_modules/gensync/index.js:223:11)");
 
 /***/ }),
 
