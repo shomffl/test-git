@@ -18,8 +18,14 @@ export const LoginModal = (props) => {
             "email": email,
             "password": password
         }
-        axios.post("api/login", data).then((res) => console.log(res.data.error_judgement));
-        // navigate("/select");
+        axios.post("api/login", data).then((res) => {
+            if (res.data.error_judgement == "true"){
+                console.log("is error");
+            } else {
+                console.log("all collect");
+                navigate("/select");
+            }
+        });
     }
 
     
