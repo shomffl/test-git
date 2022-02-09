@@ -36421,8 +36421,13 @@ var LoginModal = function LoginModal(props) {
       "password": password
     };
     axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("api/login", data).then(function (res) {
-      return console.log(res.data.error_judgement);
-    }); // navigate("/select");
+      if (res.data.error_judgement == "true") {
+        console.log("is error");
+      } else {
+        console.log("all collect");
+        navigate("/select");
+      }
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
