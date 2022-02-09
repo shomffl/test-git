@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import React,{useState} from "react";
 import {ButtonModal} from "../../molecules/ButtonModal";
 import {Input} from "../../atoms/input/Input";
 import {TextInput} from "../../molecules/TextInput";
