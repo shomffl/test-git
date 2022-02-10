@@ -1,9 +1,10 @@
 import React from "react";
+import {Background} from "../atoms/background/Background";
 
 const Select = () => {
     
     return (
-        <h2>select</h2>
+        <Background>select</Background>
         )
 }
 export default Select;
