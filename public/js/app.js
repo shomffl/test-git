@@ -36425,6 +36425,7 @@ var LoginModal = function LoginModal(props) {
         console.log("is error");
       } else {
         console.log("all collect");
+        console.log(res.data.user_id);
         navigate("/select");
       }
     });

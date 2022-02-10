@@ -29,14 +29,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {   
         $user = User::where("email", $request["email"])->first();
-        
         $error_judgement = "false";
         $text = "";
+        $user_id = "";
         
         if ($user != null){
             if (Hash::check($request["password"], $user["password"] ,)){
                 $text = "ログインに成功しました";
                 $error_judgement = "false";
+                $user_id = $user["id"];
             } else{
                 $error_judgement = "true";
                 $text = "ログインに失敗しました";
@@ -50,6 +51,6 @@ class AuthController extends Controller
         logger($error_judgement);
 
         
-        return response()->json(["error_judgement" => $error_judgement]);
+        return response()->json(["error_judgement" => $error_judgement, "user_id" => $user_id ]);
     }
 }
