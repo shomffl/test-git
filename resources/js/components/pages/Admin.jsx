@@ -7,8 +7,8 @@ const Admin = () => {
     const onClickSubmit = (e) => {
         e.preventDefault();
         const data = {
-            "city_name" : "aaaaaaaa",
-            "city_code" : "aaaaaaaa",
+            "city_name" : cityName,
+            "city_code" : cityCode
         }
         axios.post("api/location/register", data).then((res)=>console.log(res.data))
     }
