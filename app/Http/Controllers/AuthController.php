@@ -51,6 +51,6 @@ class AuthController extends Controller
         logger($error_judgement);
 
         
-        return response()->json(["error_judgement" => $error_judgement, "user_id" => $user_id ]);
+        return response()->json(["error_judgement" => $error_judgement, "user_id" => $user_id]);
     }
 }
