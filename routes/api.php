@@ -15,6 +15,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::post("login", "AuthController@login");
     Route::get("/location/get", "LocationController@get");
     Route::post("/location/register", "LocationController@register");
+    Route::post("/locations/update", "LocationController@update");
 });
 
 

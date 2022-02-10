@@ -19,4 +19,8 @@ class LocationController extends Controller
       $location->fill($input)->save();
       return response()->json($input);
    }
+   
+   public function update(Request $request){
+      logger($request);
+   }
 }
