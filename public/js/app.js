@@ -36744,22 +36744,25 @@ var Select = function Select() {
       locations = _useState2[0],
       setLocations = _useState2[1];
 
-  var locationsList = [];
+  var validateLocationsList = [];
+  var sendLocationsList = [];
 
   var onClickAddList = function onClickAddList(e) {
-    var filter_code = locationsList.filter(function (code, index) {
-      return code.includes(e);
+    var filter_code = validateLocationsList.filter(function (code, index) {
+      return code.includes(e["name_id"]);
     });
-    console.log("filter_code", filter_code);
+    var sameNameIndex = validateLocationsList.indexOf(e["name_id"], 0);
 
     if (filter_code[0] == null) {
-      locationsList.push(e);
+      validateLocationsList.push(e["name_id"]);
+      sendLocationsList.push(e["id"]);
     } else {
-      var sameNameIndex = locationsList.indexOf(e, 0);
-      locationsList.splice(sameNameIndex, 1);
+      validateLocationsList.splice(sameNameIndex, 1);
+      sendLocationsList.splice(sameNameIndex, 1);
     }
 
-    console.log(locationsList);
+    console.log(validateLocationsList);
+    console.log(sendLocationsList);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -36767,15 +36770,24 @@ var Select = function Select() {
       return setLocations(res.data.locations);
     });
   }, []);
-  console.log(locations);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__["Background"], null, Object.keys(locations).map(function (data, key) {
+
+  var onClickSend = function onClickSend() {
+    var data = {
+      "locations": sendLocationsList
+    };
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/locations/update", data);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__["Background"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object.keys(locations).map(function (data, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__["PrimaryButton"], {
       key: key,
       onClickEvent: function onClickEvent(e) {
-        return onClickAddList(locations[data]["name_id"]);
+        return onClickAddList(locations[data]);
       }
     }, locations[data]["name"]);
-  }));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: onClickSend
+  }, "send"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Select);

@@ -6,30 +6,44 @@ import {PrimaryButton} from "../atoms/button/PrimaryButton";
 
 const Select = () => {
     const [locations, setLocations] = useState("");
-    const locationsList = [];
+    const validateLocationsList = [];
+    const sendLocationsList = [];
+
     const onClickAddList = (e) => {
-        const filter_code = locationsList.filter((code, index) => {
-            return code.includes(e);
+        const filter_code = validateLocationsList.filter((code, index) => {
+            return code.includes(e["name_id"]);
         })
-        console.log("filter_code",filter_code)
+        const sameNameIndex = validateLocationsList.indexOf(e["name_id"], 0);
         if (filter_code[0] == null){
-            locationsList.push(e);
+            validateLocationsList.push(e["name_id"]);
+            sendLocationsList.push(e["id"])
         }else{
-            const sameNameIndex = locationsList.indexOf(e, 0);
-            locationsList.splice(sameNameIndex, 1);
+            validateLocationsList.splice(sameNameIndex, 1);
+            sendLocationsList.splice(sameNameIndex, 1);
         }
-        console.log(locationsList)
+        console.log(validateLocationsList)
+        console.log(sendLocationsList)
     }
-    
+
     useEffect(()=>{
         axios.get("api/location/get").then((res)=>setLocations(res.data.locations));
     },[])
-    console.log(locations)
+    
+    const onClickSend = () => {
+        const data = {
+            "locations" : sendLocationsList
+        }
+        axios.post("api/locations/update",data)
+    }
+    
     return (
         <Background>
+            <div>
                 {Object.keys(locations).map((data, key)=> (
-                        <PrimaryButton key={key} onClickEvent={e => onClickAddList(locations[data]["name_id"])}>{locations[data]["name"]}</PrimaryButton>
+                        <PrimaryButton key={key} onClickEvent={e => onClickAddList(locations[data])}>{locations[data]["name"]}</PrimaryButton>
                     ))}
+            </div>
+            <button onClick={onClickSend}>send</button>
         </Background>
         )
 }
