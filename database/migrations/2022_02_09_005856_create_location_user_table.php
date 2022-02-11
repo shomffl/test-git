@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserLocationTable extends Migration
+class CreateLocationUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_location', function (Blueprint $table) {
+        Schema::create('location_user', function (Blueprint $table) {
             $table->integer("user_id")->unsigned();
             $table->integer("location_id")->unsigned();
             $table->primary(["user_id", "location_id"]);
@@ -27,6 +27,6 @@ class CreateUserLocationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_location');
+        Schema::dropIfExists('location_user');
     }
 }

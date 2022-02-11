@@ -36731,6 +36731,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../atoms/button/PrimaryButton */ "./resources/js/components/atoms/button/PrimaryButton.jsx");
+/* harmony import */ var _provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../provider/UserInfoProvider */ "./resources/js/provider/UserInfoProvider.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -36748,6 +36749,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Select = function Select() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -36756,6 +36758,7 @@ var Select = function Select() {
 
   var validateLocationsList = [];
   var sendLocationsList = [];
+  var userInfo = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_4__["userInfoContext"]);
 
   var onClickAddList = function onClickAddList(e) {
     var filter_code = validateLocationsList.filter(function (code, index) {
@@ -36783,6 +36786,7 @@ var Select = function Select() {
 
   var onClickSend = function onClickSend() {
     var data = {
+      "user_id": userInfo,
       "locations": sendLocationsList
     };
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/locations/update", data);
