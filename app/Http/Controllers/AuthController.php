@@ -53,4 +53,15 @@ class AuthController extends Controller
         
         return response()->json(["error_judgement" => $error_judgement, "user_id" => $user_id]);
     }
+    public function update(Request $request, User $user){
+        $input_user_id = $request["user_id"];
+        $input_locations = $request["locations"];
+        logger($input_user_id);
+        logger($input_locations);
+        $user = User::find($input_user_id);
+        logger($user);
+        $user->locations()->attach($input_locations);
+        
+        return response()->json(["user_id" => $input_user_id, "locations" => $input_locations]);
+    }
 }

@@ -20,8 +20,4 @@ class LocationController extends Controller
       $location->fill($request->all())->save();
       return response()->json($request);
    }
-   
-   public function update(Request $request){
-      logger($request);
-   }
 }

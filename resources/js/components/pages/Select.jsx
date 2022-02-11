@@ -1,13 +1,15 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import {Background} from "../atoms/background/Background";
 import axios from "axios";
 import {PrimaryButton} from "../atoms/button/PrimaryButton";
+import {userInfoContext} from "../../provider/UserInfoProvider";
 
 
 const Select = () => {
     const [locations, setLocations] = useState("");
     const validateLocationsList = [];
     const sendLocationsList = [];
+    const userInfo = useContext(userInfoContext);
 
     const onClickAddList = (e) => {
         const filter_code = validateLocationsList.filter((code, index) => {
@@ -31,6 +33,7 @@ const Select = () => {
     
     const onClickSend = () => {
         const data = {
+            "user_id" : userInfo,
             "locations" : sendLocationsList
         }
         axios.post("api/locations/update",data)
