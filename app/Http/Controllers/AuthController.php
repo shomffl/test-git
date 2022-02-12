@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Location;
 use Illuminate\Support\Facades\Hash;
 
 
 
 class AuthController extends Controller
 {
-    public function index(){
-        // $user = User::all();
-        $user = User::where('email', "sho@gmail.com")->get();
-        logger($user[0]["email"]);
-        return response()->json($user);
+    public function get(Request $request, User $user){ 
+        $input_user_id = $request["user_id"];
+        $user = User::find($input_user_id);
+        return response()->json(["locations_info" => $user->locations]);
     }
     public function register(Request $request)
     {
