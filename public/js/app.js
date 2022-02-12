@@ -36381,7 +36381,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../provider/UserInfoProvider */ "./resources/js/provider/UserInfoProvider.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -36393,8 +36392,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
@@ -36418,8 +36415,6 @@ var LoginModal = function LoginModal(props) {
       setIsOpen = props.setIsOpen,
       onClickChangeAuth = props.onClickChangeAuth;
   var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["useNavigate"])();
-  var userInfo = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_7__["userInfoContext"]);
-  var setUserInfo = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_7__["setUserInfoContext"]);
 
   var onClickLogin = function onClickLogin(e) {
     e.preventDefault();
@@ -36428,18 +36423,13 @@ var LoginModal = function LoginModal(props) {
       "password": password
     };
     axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("api/login", data).then(function (res) {
-      if (res.data.error_judgement == "true") {
-        console.log("is error");
-      } else {
-        console.log("all collect");
-        console.log("user id", res.data.user_id);
-        setUserInfo(res.data.user_id);
+      if (res.data.error_judgement == "true") {} else {
         navigate("/select");
+        window.localStorage.setItem("user_id", res.data.user_id);
       }
     });
   };
 
-  console.log("provider", userInfo);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_molecules_ButtonModal__WEBPACK_IMPORTED_MODULE_1__["ButtonModal"], {
     isOpen: isOpen,
     text: "SEND",
@@ -36731,7 +36721,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _atoms_button_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../atoms/button/PrimaryButton */ "./resources/js/components/atoms/button/PrimaryButton.jsx");
-/* harmony import */ var _provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../provider/UserInfoProvider */ "./resources/js/provider/UserInfoProvider.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -36758,7 +36748,7 @@ var Select = function Select() {
 
   var validateLocationsList = [];
   var sendLocationsList = [];
-  var userInfo = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_provider_UserInfoProvider__WEBPACK_IMPORTED_MODULE_4__["userInfoContext"]);
+  var navigate = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["useNavigate"])();
 
   var onClickAddList = function onClickAddList(e) {
     var filter_code = validateLocationsList.filter(function (code, index) {
@@ -36773,9 +36763,6 @@ var Select = function Select() {
       validateLocationsList.splice(sameNameIndex, 1);
       sendLocationsList.splice(sameNameIndex, 1);
     }
-
-    console.log(validateLocationsList);
-    console.log(sendLocationsList);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -36786,10 +36773,10 @@ var Select = function Select() {
 
   var onClickSend = function onClickSend() {
     var data = {
-      "user_id": userInfo,
+      "user_id": window.localStorage.getItem("user_id"),
       "locations": sendLocationsList
     };
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/locations/update", data);
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/locations/update", data).then(navigate("/weather"));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__["Background"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object.keys(locations).map(function (data, key) {
@@ -36819,10 +36806,24 @@ var Select = function Select() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../atoms/background/Background */ "./resources/js/components/atoms/background/Background.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 
 var Weather = function Weather() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "weather");
+  console.log("user_info", window.localStorage.getItem("user_id"));
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function (e) {
+    var data = {
+      "user_id": window.localStorage.getItem("user_id")
+    };
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/get", data).then(function (res) {
+      return console.log(res.data.locations_info[0]["name_id"]);
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__["Background"], null, "weather");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Weather);

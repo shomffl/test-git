@@ -2,14 +2,15 @@ import React,{useState, useEffect, useContext} from "react";
 import {Background} from "../atoms/background/Background";
 import axios from "axios";
 import {PrimaryButton} from "../atoms/button/PrimaryButton";
-import {userInfoContext} from "../../provider/UserInfoProvider";
+import {useNavigate} from "react-router-dom";
+
 
 
 const Select = () => {
     const [locations, setLocations] = useState("");
     const validateLocationsList = [];
     const sendLocationsList = [];
-    const userInfo = useContext(userInfoContext);
+    const navigate = useNavigate();
 
     const onClickAddList = (e) => {
         const filter_code = validateLocationsList.filter((code, index) => {
@@ -23,8 +24,6 @@ const Select = () => {
             validateLocationsList.splice(sameNameIndex, 1);
             sendLocationsList.splice(sameNameIndex, 1);
         }
-        console.log(validateLocationsList)
-        console.log(sendLocationsList)
     }
 
     useEffect(()=>{
@@ -33,10 +32,10 @@ const Select = () => {
     
     const onClickSend = () => {
         const data = {
-            "user_id" : userInfo,
+            "user_id" : window.localStorage.getItem("user_id"),
             "locations" : sendLocationsList
         }
-        axios.post("api/locations/update",data)
+        axios.post("api/locations/update",data).then(navigate("/weather"));
     }
     
     return (

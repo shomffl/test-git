@@ -10,7 +10,7 @@ use App\Http\Controllers\LocationController;
 // });
 
 Route::group(['middleware' => ['api']], function () {
-    Route::get("index", "AuthController@index");
+    Route::post("get", "AuthController@get");
     Route::post("register", "AuthController@register");
     Route::post("login", "AuthController@login");
     Route::get("/location/get", "LocationController@get");
