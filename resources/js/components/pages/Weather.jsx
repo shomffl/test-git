@@ -11,7 +11,7 @@ const Weather = () => {
         }
         axios.post("api/get", data).then((res) => 
             axios.post("api/weather/get", {"location_id": res.data.locations_info[0]["name_id"]}).then((response) => {
-                console.log(response.data);
+                console.log(response.data.weather_data);
             }));
     })
     return(

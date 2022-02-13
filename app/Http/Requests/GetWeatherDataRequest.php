@@ -46,6 +46,6 @@ class GetWeatherDataRequest extends FormRequest
         // レスポンス結果をjson形式にデコード
         $forecast_data = json_decode($response->getBody(), true);
         
-        return $forecast_data;
+        return $forecast_data["list"];
     }
 }
