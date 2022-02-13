@@ -36823,7 +36823,7 @@ var Weather = function Weather() {
       return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/weather/get", {
         "location_id": res.data.locations_info[0]["name_id"]
       }).then(function (response) {
-        console.log(response.data);
+        console.log(response.data.weather_data);
       });
     });
   });
