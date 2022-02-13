@@ -30,6 +30,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     "weather_forecast" => [
-        "token" => env("WEATHER_ACCESS_TOKEN");
-        ]
+        "token" => env("WEATHER_ACCESS_TOKEN"),
+        ],
 ];
