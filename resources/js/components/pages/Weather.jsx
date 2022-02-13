@@ -10,7 +10,7 @@ const Weather = () => {
             "user_id": window.localStorage.getItem("user_id")
         }
         axios.post("api/get", data).then((res) => 
-            axios.post("api/get/weather", {"location_id": res.data.locations_info[0]["name_id"]}).then((response) => {
+            axios.post("api/weather/get", {"location_id": res.data.locations_info[0]["name_id"]}).then((response) => {
                 console.log(response.data);
             }));
     })

@@ -20,9 +20,4 @@ class LocationController extends Controller
       $location->fill($request->all())->save();
       return response()->json($request);
    }
-   public function getWeatherData(Request $request){
-      logger($request);
-      
-      return response()->json(["weather_data" => $request->location_id]);
-   }
 }

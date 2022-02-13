@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\WeatherController;
 
 
 
@@ -16,7 +17,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get("location/get", "LocationController@get");
     Route::post("location/register", "LocationController@register");
     Route::post("locations/update", "AuthController@update");
-    Route::post("get/weather", "LocationController@getWeatherData");
+    Route::post("weather/get", "WeatherController@getWeatherData");
 });
 
 
