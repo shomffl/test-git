@@ -36820,7 +36820,11 @@ var Weather = function Weather() {
       "user_id": window.localStorage.getItem("user_id")
     };
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/get", data).then(function (res) {
-      return console.log(res.data.locations_info[0]["name_id"]);
+      return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/weather/get", {
+        "location_id": res.data.locations_info[0]["name_id"]
+      }).then(function (response) {
+        console.log(response.data);
+      });
     });
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_atoms_background_Background__WEBPACK_IMPORTED_MODULE_1__["Background"], null, "weather");
