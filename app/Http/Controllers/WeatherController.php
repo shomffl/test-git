@@ -21,12 +21,15 @@ class WeatherController extends Controller
             
             $weather_info = WeatherController::weather_info($one_of_data);
         
-            $date = array("日付" => $one_of_data["dt_txt"]);
+            $date = $one_of_data["dt_txt"];
             
-            $temp = array("気温" => $one_of_data["main"]["temp"]);
+            $temp = $one_of_data["main"]["temp"];
+            
+            $humidity = $one_of_data["main"]["humidity"]; 
             
 
-            array_push($one_of_forecast_array, $date, $weather_info, $temp); 
+            // array_push($one_of_forecast_array, $date, $weather_info, $temp, $humidity); 
+            $one_of_forecast_array = array("日付" => $date, "天気" => $weather_info, "気温" => $temp, "湿度" => $humidity);
             array_push($weather_array, $one_of_forecast_array);
         }
         return response()->json(["weather_data" => $weather_array]);
