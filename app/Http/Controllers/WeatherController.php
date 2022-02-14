@@ -20,8 +20,10 @@ class WeatherController extends Controller
             $one_of_forecast_array = array();
             
             $judgment_weather_condition = WeatherController::weather_condition($one_of_data["weather"][0]["main"]);
+            $icon = "http://openweathermap.org/img/wn/" . $one_of_data["weather"][0]["icon"] . "@2x.png";
             
-            $weather = array("概要" => $one_of_data["weather"][0]["main"], "詳細" => $one_of_data["weather"][0]["description"], "外干しの可否" => $judgment_weather_condition);
+            $weather = array("概要" => $one_of_data["weather"][0]["main"], "詳細" => $one_of_data["weather"][0]["description"], "外干しの可否" => $judgment_weather_condition, "画像" => $icon);
+            
             $date = array("日付" => $one_of_data["dt_txt"]);
 
             array_push($one_of_forecast_array, $date, $weather);
