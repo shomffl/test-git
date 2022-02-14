@@ -17,10 +17,14 @@ class WeatherController extends Controller
         $weather_data = $weather->getWeatherData($location_id);
         $weather_array = array();
         foreach($weather_data as $one_of_data){
+            $one_of_forecast_array = array();
+            
             $date = array("日付" => $one_of_data["dt_txt"]);
-            // $weather_description = array("概要" => $one_of_data["weather"][0]["main"])
-            logger($one_of_data);
-            array_push($weather_array, $date);
+            $weather_description = array("概要" => $one_of_data["weather"][0]["main"]);
+            
+            
+            array_push($one_of_forecast_array, $weather_description);
+            array_push($weather_array, $one_of_forecast_array);
         }
         // logger($weather_array);
         return response()->json(["weather_data" => $weather_array]);
