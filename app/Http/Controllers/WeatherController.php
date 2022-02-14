@@ -19,19 +19,39 @@ class WeatherController extends Controller
         foreach($weather_data as $one_of_data){
             $one_of_forecast_array = array();
             
-            $judgment_weather_condition = WeatherController::weather_condition($one_of_data["weather"][0]["main"]);
-            $icon = "http://openweathermap.org/img/wn/" . $one_of_data["weather"][0]["icon"] . "@2x.png";
-            
-            $weather = array("概要" => $one_of_data["weather"][0]["main"], "詳細" => $one_of_data["weather"][0]["description"], "外干しの可否" => $judgment_weather_condition, "画像" => $icon);
-            
+            $weather_info = WeatherController::weather_info($one_of_data);
+        
             $date = array("日付" => $one_of_data["dt_txt"]);
 
-            array_push($one_of_forecast_array, $date, $weather);
+            array_push($one_of_forecast_array, $date, $weather_info);
             array_push($weather_array, $one_of_forecast_array);
         }
-        logger($weather_array);
         return response()->json(["weather_data" => $weather_array]);
    }
+   // 天気に関する基本情報を加工するための関数
+   public function weather_info($one_of_data)
+   {    
+        $info_array = array();
+        
+        # 天気の概要
+        $overview = $one_of_data["weather"][0]["main"];
+        
+        # 天気の詳細
+        $detail = $one_of_data["weather"][0]["description"];
+        
+        # 外干しの可否
+        $judgment_weather_condition = WeatherController::weather_condition($one_of_data["weather"][0]["main"]);
+        
+        # 天気に対応したアイコン
+        $icon = "http://openweathermap.org/img/wn/" . $one_of_data["weather"][0]["icon"] . "@2x.png";
+        
+        # 上記のデータを連想配列形式にする
+        $weather = array("概要" => $overview, "詳細" => $detail, "外干しの可否" => $judgment_weather_condition, "画像" => $icon);
+        
+        return $weather;
+   }
+   
+   // 外干しをできるかどうか判別するための関数
    public function weather_condition($weather)
    {
         $condition_text = "";
