@@ -38,7 +38,7 @@ class GetWeatherDataRequest extends FormRequest
         // openWeatherMapのURLと必要なクエリパラメーター
         $base_url = "http://api.openweathermap.org/data/2.5/forecast/";
         $api_key = config("services.weather_forecast.key");
-        $url = $base_url . "?id=" . $location_id . "&lang=ja&units=metric&appid=" . $api_key;
+        $url = $base_url . "?id=" . $location_id . "&lang=ja&cnt=3&units=metric&appid=" . $api_key;
         
         // リクエストの送信処理 
         $response = $client->request("GET", $url);
