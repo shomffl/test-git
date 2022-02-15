@@ -27,9 +27,11 @@ class WeatherController extends Controller
             
             $humidity = $one_of_data["main"]["humidity"]; 
             
-
-            // array_push($one_of_forecast_array, $date, $weather_info, $temp, $humidity); 
-            $one_of_forecast_array = array("日付" => $date, "天気" => $weather_info, "気温" => $temp, "湿度" => $humidity);
+            $wind_spped = $one_of_data["wind"]["speed"];
+            
+            $wind = WeatherController::wind_info($one_of_data["wind"]["speed"]);
+            
+            $one_of_forecast_array = array("日付" => $date, "天気" => $weather_info, "気温" => $temp, "湿度" => $humidity, "風" => $wind);
             array_push($weather_array, $one_of_forecast_array);
         }
         return response()->json(["weather_data" => $weather_array]);
@@ -37,8 +39,6 @@ class WeatherController extends Controller
    // 天気に関する基本情報を加工するための関数
    public function weather_info($one_of_data)
    {    
-        $info_array = array();
-        
         # 天気の概要
         $overview = $one_of_data["weather"][0]["main"];
         
@@ -51,10 +51,25 @@ class WeatherController extends Controller
         # 天気に対応したアイコン
         $icon = "http://openweathermap.org/img/wn/" . $one_of_data["weather"][0]["icon"] . "@2x.png";
         
+
         # 上記のデータを連想配列形式にする
         $weather = array("概要" => $overview, "詳細" => $detail, "外干しの可否" => $judgment_weather_condition, "画像" => $icon);
         
         return $weather;
+   }
+   
+   public function wind_info($weather)
+   {
+        # 引数として渡された値を風速としてそのまま格納
+        $wind_speed = $weather;
+        
+        # wind_condition関数を呼び出して、返却された値を変数に格納
+        $wind_condition = WeatherController::wind_condition($wind_speed);
+        
+        #　上記のデータを連想配列形式に格納する
+        $wind = array("風速" => $wind_speed, "風の状態" => $wind_condition);
+        
+        return $wind;
    }
    
    // 外干しをできるかどうか判別するための関数
@@ -76,7 +91,23 @@ class WeatherController extends Controller
         }else{
             $condition_text = "室内干しを検討しましょう。";
         }
-
         return $condition_text;
+   }
+   
+   # 風速から洗濯物を外干ししても飛ばないか判定
+   public function wind_condition($weather)
+   {
+    $convert_wind = (float) $weather;
+    $condition_text = "";
+    if ($convert_wind >= 7.0){
+        $condition_text = "風が強いです。室内干しを検討しましょう。";
+    }elseif ($convert_wind >= 4.0){
+        $condition_text = "少し風が強いです。洗濯物が飛ばないように気を付けましょう。";
+    }elseif ($convert_wind >= 1.6){
+        $condition_text = "心地いい風です。";
+    }elseif ($convert_wind < 1.6){
+        $condition_text = "風は殆どありません。";
+    }
+    return $condition_text;
    }
 }
