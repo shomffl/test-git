@@ -31,7 +31,9 @@ class WeatherController extends Controller
             
             $wind = WeatherController::wind_info($one_of_data["wind"]["speed"]);
             
-            $one_of_forecast_array = array("日付" => $date, "天気" => $weather_info, "気温" => $temp, "湿度" => $humidity, "風" => $wind);
+            $exponent = WeatherController::laundry_exponent($temp, $humidity);
+            
+            $one_of_forecast_array = array("日付" => $date, "天気" => $weather_info, "気温" => $temp, "湿度" => $humidity, "風" => $wind, "洗濯関数" => $exponent);
             array_push($weather_array, $one_of_forecast_array);
         }
         return response()->json(["weather_data" => $weather_array]);
@@ -109,5 +111,11 @@ class WeatherController extends Controller
         $condition_text = "風は殆どありません。";
     }
     return $condition_text;
+   }
+   # 洗濯指数を計算する関数
+   public function laundry_exponent($temp, $humidity)
+   {
+        $calc = round((0.81 * (float) $temp + 0.01 * (float) $humidity * (0.99 * (float) $temp - 14.3) + 46.3), 3);
+        logger($calc);
    }
 }
